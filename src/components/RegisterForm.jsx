@@ -29,7 +29,7 @@ const RegisterForm = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/departments');
+        const res = await axios.get('https://onrerner-pern.onrender.com/api/admin/departments');
         setDepartments(res.data);
       } catch {
         toast.error('Failed to load departments');
@@ -44,7 +44,7 @@ const RegisterForm = () => {
       if (!selectedDept) return;
 
       try {
-        const res = await axios.get(`http://localhost:5000/api/sections/${selectedDept.id}`);
+        const res = await axios.get(`https://onrerner-pern.onrender.com/api/sections/${selectedDept.id}`);
         const list = res.data || [];
         setSections(list);
 
@@ -89,7 +89,7 @@ const RegisterForm = () => {
         delete dataToSubmit.section;
       }
 
-      await axios.post('http://localhost:5000/api/auth/register', dataToSubmit);
+      await axios.post('https://onrerner-pern.onrender.com/api/auth/register', dataToSubmit);
       toast.success('User registered successfully! Redirecting...');
       setTimeout(() => history.push('/login'), 2000);
     } catch (error) {
